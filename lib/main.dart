@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/constants/app/app_constants.dart';
-import 'package:pomodofocus/view/onboard/onboard1_view.dart';
+
+import 'view/onboard/onboard2_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Onboard1View(),
+      home: const Onboard2View(),
     );
   }
 }

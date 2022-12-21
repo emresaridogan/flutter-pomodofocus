@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/constants/color/color_constants.dart';
 import 'package:pomodofocus/core/constants/image/image_constants.dart';
 
-class Onboard1View extends StatelessWidget {
-  const Onboard1View({super.key});
+class Onboard2View extends StatelessWidget {
+  const Onboard2View({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
+        const Spacer(),
         Expanded(
-          flex: 3,
-          child: Image.asset(ImageConstants.instance.onboard1),
+          flex: 2,
+          child: Image.asset(ImageConstants.instance.onboard2),
         ),
         Expanded(
           child: Row(
             children: const [
               Spacer(),
               Expanded(
-                flex: 4,
+                flex: 6,
                 child: Text(
-                  "Easy task & work management with pomo",
+                  "Track your productivity & gain insights",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 ),

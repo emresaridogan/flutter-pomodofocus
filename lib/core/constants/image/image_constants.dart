@@ -9,6 +9,7 @@ class ImageConstants {
 
   String get logo => toPng('logo');
   String get onboard1 => toPng('onboard1');
+  String get onboard2 => toPng('onboard2');
 
   String toPng(String name) =>
       '${ApplicationConstants.instance.imagesPath}$name.png';
