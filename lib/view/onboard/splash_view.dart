@@ -8,7 +8,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromRGBO(255, 100, 105, 1),
+        backgroundColor: ColorConstants.instance.secondaryColor,
         body: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -25,7 +25,7 @@ class SplashView extends StatelessWidget {
                 )),
                 const Spacer(),
                 CircularProgressIndicator(
-                  backgroundColor: ColorConstants.instance.primaryTealColor,
+                  backgroundColor: ColorConstants.instance.primaryColor,
                   valueColor: AlwaysStoppedAnimation(
                       ColorConstants.instance.whiteColor),
                 ),

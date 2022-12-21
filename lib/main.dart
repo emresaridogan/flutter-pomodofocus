@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/constants/app/app_constants.dart';
-import 'package:pomodofocus/view/onboard/splash_view.dart';
+import 'package:pomodofocus/view/onboard/onboard1_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashView(),
+      home: const Onboard1View(),
     );
   }
 }
