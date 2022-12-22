@@ -1,66 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:pomodofocus/core/constants/color/color_constants.dart';
-import 'package:pomodofocus/core/constants/image/image_constants.dart';
+import 'package:pomodofocus/core/base/state/base_state.dart';
+import 'package:pomodofocus/core/base/view/base_view.dart';
 
-class Onboard1View extends StatelessWidget {
+import 'onboard2_view.dart';
+
+class Onboard1View extends StatefulWidget {
   const Onboard1View({super.key});
 
   @override
+  State<Onboard1View> createState() => _Onboard1ViewState();
+}
+
+class _Onboard1ViewState extends BaseState<Onboard1View> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        Expanded(
-          flex: 3,
-          child: Image.asset(ImageConstants.instance.onboard1),
-        ),
-        Expanded(
-          child: Row(
-            children: const [
-              Spacer(),
-              Expanded(
-                flex: 4,
-                child: Text(
-                  "Easy task & work management with pomo",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Spacer()
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            children: [
-              const Spacer(),
-              Expanded(
-                flex: 15,
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                            const EdgeInsets.all(20.0)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                          ),
-                        ),
-                        backgroundColor: MaterialStateProperty.all(
-                            ColorConstants.instance.secondaryColor)),
-                    onPressed: () {},
-                    child: const Text(
-                      "Next",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    )),
-              ),
-              const Spacer()
-            ],
-          ),
-        ),
-      ]),
-    );
+    return BaseView(viewModel: "", onPageBuilder: ((context) => getScaffold));
   }
+
+  Widget get getScaffold => Scaffold(
+        body: Column(children: [
+          Expanded(
+            flex: 3,
+            child: Image.asset(imageConstants.onboard1),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    stringConstants.onboard1,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 35, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                const Spacer(),
+                Expanded(
+                  flex: 15,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                              paddingConstants.paddingAll20),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: radiusConstants.circular20,
+                            ),
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                              colorConstants.secondaryColor)),
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const Onboard2View())),
+                      child: Text(
+                        stringConstants.next,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      )),
+                ),
+                const Spacer()
+              ],
+            ),
+          ),
+        ]),
+      );
 }
