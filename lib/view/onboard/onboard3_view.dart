@@ -17,6 +17,7 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
   }
 
   Widget get getScaffold => Scaffold(
+        backgroundColor: colorConstants.whiteColor,
         body: Column(children: [
           const Spacer(),
           Expanded(
@@ -43,7 +44,6 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
             flex: 2,
             child: Row(
               children: [
-                const Spacer(),
                 Expanded(
                   flex: 15,
                   child: ElevatedButton(
@@ -68,7 +68,6 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
                         ),
                       )),
                 ),
-                const Spacer()
               ],
             ),
           ),

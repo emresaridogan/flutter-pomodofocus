@@ -44,17 +44,13 @@ class _SplashViewState extends BaseState<SplashView> {
                 fit: BoxFit.contain,
               )),
               const Spacer(),
-              circularProgressIndicator(),
+              CircularProgressIndicator(
+                backgroundColor: colorConstants.primaryColor,
+                valueColor: AlwaysStoppedAnimation(colorConstants.whiteColor),
+              ),
               const Spacer()
             ],
           ),
         ],
       ));
-
-  CircularProgressIndicator circularProgressIndicator() {
-    return CircularProgressIndicator(
-      backgroundColor: colorConstants.primaryColor,
-      valueColor: AlwaysStoppedAnimation(colorConstants.whiteColor),
-    );
-  }
 }
