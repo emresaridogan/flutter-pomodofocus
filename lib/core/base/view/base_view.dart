@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodofocus/core/constants/color/color_constants.dart';
 
 class BaseView<T> extends StatefulWidget {
   final Widget Function(BuildContext context) onPageBuilder;
@@ -38,8 +39,10 @@ class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: ColorConstants.instance.whiteColor,
       body: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: widget.onPageBuilder(context),
       ),
     );

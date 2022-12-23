@@ -9,6 +9,9 @@ import 'package:pomodofocus/core/constants/string/string_constants.dart';
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ThemeData get themeData => Theme.of(context);
 
+  get dynamicHeight => MediaQuery.of(context).size.height;
+  get dynamicWidth => MediaQuery.of(context).size.width;
+
   ColorConstants colorConstants = ColorConstants.instance;
   ImageConstants imageConstants = ImageConstants.instance;
   ApplicationConstants applicationConstants = ApplicationConstants.instance;

@@ -12,6 +12,13 @@ class ImageConstants {
   String get onboard2 => toPng('onboard2');
   String get onboard3 => toPng('onboard3');
 
+  String get facebook => toSvg('facebook');
+  String get apple => toSvg('apple');
+  String get google => toSvg('google');
+
+  String toSvg(String name) =>
+      '${ApplicationConstants.instance.imagesPath}$name.svg';
+
   String toPng(String name) =>
       '${ApplicationConstants.instance.imagesPath}$name.png';
 }
