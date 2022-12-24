@@ -18,6 +18,14 @@ class StringConstants {
   get password => "Password";
   get remember => "Remember me";
   get signin => "Sign in";
+  get or => "or continue with";
+  get dontHave => "Don't have account?";
+  get forgotPass => "Forgot the password?";
+
+  //register
+  get register => "Create your Account";
+  get signup => "Sign up";
+  get alreadyHave => "Already have an account?";
 
   // error
   get emailHata => "Please input email";
