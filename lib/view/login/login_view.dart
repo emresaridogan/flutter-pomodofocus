@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
 import 'package:pomodofocus/view/onboard/splash_view.dart';
+import 'package:pomodofocus/view/register/register_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -169,7 +170,7 @@ class _LoginViewState extends BaseState<LoginView> {
           Expanded(
             flex: 1,
             child: Text(
-              "Forgot the password?",
+              stringConstants.forgotPass,
               style: TextStyle(
                   color: colorConstants.secondaryColor,
                   fontWeight: FontWeight.bold),
@@ -184,7 +185,7 @@ class _LoginViewState extends BaseState<LoginView> {
                 thickness: 2,
                 color: colorConstants.lightGrey,
               )),
-              const Text("or continue with"),
+              Text(stringConstants.or),
               Expanded(
                   child: Divider(
                 indent: 10.0,
@@ -206,7 +207,7 @@ class _LoginViewState extends BaseState<LoginView> {
                       borderRadius: radiusConstants.circular20,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: paddingConstants.paddingAll10,
                       child: SvgPicture.asset(
                         imageConstants.facebook,
                         color: Colors.blue.shade700,
@@ -222,7 +223,7 @@ class _LoginViewState extends BaseState<LoginView> {
                       borderRadius: radiusConstants.circular20,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: paddingConstants.paddingAll10,
                       child: SvgPicture.asset(
                         imageConstants.google,
                       ),
@@ -237,7 +238,7 @@ class _LoginViewState extends BaseState<LoginView> {
                       borderRadius: radiusConstants.circular20,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: paddingConstants.paddingAll10,
                       child: SvgPicture.asset(
                         imageConstants.apple,
                       ),
@@ -253,15 +254,19 @@ class _LoginViewState extends BaseState<LoginView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have account?"),
+                Text(stringConstants.dontHave),
                 const SizedBox(
                   width: 5,
                 ),
-                Text(
-                  "Sign up",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: colorConstants.secondaryColor),
+                GestureDetector(
+                  onTap: (() => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const RegisterView()))),
+                  child: Text(
+                    stringConstants.signup,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: colorConstants.secondaryColor),
+                  ),
                 )
               ],
             ),
