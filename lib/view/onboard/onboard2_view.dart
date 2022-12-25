@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
 
+import '../../core/components/buttons/button.dart';
 import 'onboard3_view.dart';
 
 class Onboard2View extends StatefulWidget {
@@ -47,29 +48,14 @@ class _Onboard2ViewState extends BaseState<Onboard2View> {
               children: [
                 Expanded(
                   flex: 15,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              paddingConstants.paddingAll20),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: radiusConstants.circular20,
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                              colorConstants.secondaryColor)),
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const Onboard3View())),
-                      child: Text(
-                        stringConstants.next,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      )),
+                  child: Button(
+                    func: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const Onboard3View())),
+                    text: stringConstants.next,
+                    color: colorConstants.secondaryColor,
+                  ),
                 ),
               ],
             ),

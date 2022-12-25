@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
-import 'package:pomodofocus/view/login/login_view.dart';
+import 'package:pomodofocus/view/account/account_setup.dart';
+
+import '../../core/components/buttons/button.dart';
 
 class Onboard3View extends StatefulWidget {
   const Onboard3View({super.key});
@@ -46,27 +48,14 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
               children: [
                 Expanded(
                   flex: 15,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              paddingConstants.paddingAll20),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: radiusConstants.circular20,
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                              colorConstants.secondaryColor)),
-                      onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const LoginView())),
-                      child: Text(
-                        stringConstants.onboard3button,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      )),
+                  child: Button(
+                    func: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const AccountSetup())),
+                    text: stringConstants.onboard3button,
+                    color: colorConstants.secondaryColor,
+                  ),
                 ),
               ],
             ),
