@@ -5,6 +5,9 @@ import 'package:pomodofocus/core/base/view/base_view.dart';
 import 'package:pomodofocus/view/onboard/splash_view.dart';
 import 'package:pomodofocus/view/register/register_view.dart';
 
+import '../../core/components/buttons/button.dart';
+import '../../core/components/buttons/icon_card.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -129,36 +132,14 @@ class _LoginViewState extends BaseState<LoginView> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                  padding: MaterialStateProperty.all(
-                                      paddingConstants.paddingAll20),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: radiusConstants.circular20,
-                                    ),
-                                  ),
-                                  backgroundColor: MaterialStateProperty.all(
-                                      colorConstants.secondaryColor)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const SplashView()));
-                                // if (_formKey.currentState!.validate()) {
-                                //   _formKey.currentState!.save();
-                                //   print('Email: $_email');
-                                //   print('Şifre: $_password');
-                                // }
-                              },
-                              child: Text(
-                                stringConstants.signin,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              )),
+                          child: Button(
+                            text: stringConstants.signin,
+                            color: colorConstants.secondaryColor,
+                            func: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const SplashView())),
+                          ),
                         ),
                       ],
                     ),
@@ -185,7 +166,7 @@ class _LoginViewState extends BaseState<LoginView> {
                 thickness: 2,
                 color: colorConstants.lightGrey,
               )),
-              Text(stringConstants.or),
+              Text(stringConstants.orWith),
               Expanded(
                   child: Divider(
                 indent: 10.0,
@@ -202,46 +183,28 @@ class _LoginViewState extends BaseState<LoginView> {
                 const Spacer(),
                 Expanded(
                   flex: 2,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: radiusConstants.circular20,
-                    ),
-                    child: Padding(
-                      padding: paddingConstants.paddingAll10,
-                      child: SvgPicture.asset(
-                        imageConstants.facebook,
-                        color: Colors.blue.shade700,
-                      ),
+                  child: IconCard(
+                    icon: SvgPicture.asset(
+                      imageConstants.facebook,
+                      color: Colors.blue.shade700,
                     ),
                   ),
                 ),
                 const Spacer(),
                 Expanded(
                   flex: 2,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: radiusConstants.circular20,
-                    ),
-                    child: Padding(
-                      padding: paddingConstants.paddingAll10,
-                      child: SvgPicture.asset(
-                        imageConstants.google,
-                      ),
+                  child: IconCard(
+                    icon: SvgPicture.asset(
+                      imageConstants.google,
                     ),
                   ),
                 ),
                 const Spacer(),
                 Expanded(
                   flex: 2,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: radiusConstants.circular20,
-                    ),
-                    child: Padding(
-                      padding: paddingConstants.paddingAll10,
-                      child: SvgPicture.asset(
-                        imageConstants.apple,
-                      ),
+                  child: IconCard(
+                    icon: SvgPicture.asset(
+                      imageConstants.apple,
                     ),
                   ),
                 ),
