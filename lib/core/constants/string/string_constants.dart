@@ -13,7 +13,7 @@ class StringConstants {
   get onboard3 => "Boost your productivity now & be successful";
 
   // account setup
-  get AccountSetupTitle => "Let's you in";
+  get accountSetupTitle => "Let's you in";
   get continueFacebook => "Continue with Facebook";
   get continueGoogle => "Continue with Google";
   get continueApple => "Continue with Apple";
