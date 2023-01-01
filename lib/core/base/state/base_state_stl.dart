@@ -5,6 +5,8 @@ import 'package:pomodofocus/core/constants/padding/padding_constants.dart';
 import 'package:pomodofocus/core/constants/radius/radius_constants.dart';
 import 'package:pomodofocus/core/constants/string/string_constants.dart';
 
+import '../../constants/icon/icon_constants.dart';
+
 abstract class BaseStateStl {
   ColorConstants colorConstants = ColorConstants.instance;
   ImageConstants imageConstants = ImageConstants.instance;
@@ -12,4 +14,5 @@ abstract class BaseStateStl {
   PaddingConstants paddingConstants = PaddingConstants.instance;
   RadiusConstants radiusConstants = RadiusConstants.instance;
   StringConstants stringConstants = StringConstants.instance;
+  IconConstants iconConstants = IconConstants.instance;
 }
