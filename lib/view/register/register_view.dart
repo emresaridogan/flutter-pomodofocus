@@ -29,13 +29,7 @@ class _RegisterViewState extends BaseState<RegisterView> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: colorConstants.whiteColor,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.arrow_back,
-            color: colorConstants.blackColor,
-          ),
-        ),
+        leading: IconButton(onPressed: () {}, icon: iconConstants.arrowBack),
       ),
       body: BaseView(
         viewModel: "",
