@@ -12,6 +12,8 @@ class ColorConstants {
   get whiteColor => const Color.fromRGBO(255, 255, 255, 1);
   get blackColor => Colors.black;
 
+  get secondButtonColor => const Color.fromRGBO(255, 238, 239, 1);
+
   get lightGrey => const Color.fromRGBO(245, 245, 245, 1);
   get medGrey => const Color.fromRGBO(170, 170, 170, 1);
 

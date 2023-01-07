@@ -11,6 +11,7 @@ class ImageConstants {
   String get onboard1 => toPng('onboard1');
   String get onboard2 => toPng('onboard2');
   String get onboard3 => toPng('onboard3');
+  String get person => toPng('person');
 
   String get facebook => toSvg('facebook');
   String get apple => toSvg('apple');

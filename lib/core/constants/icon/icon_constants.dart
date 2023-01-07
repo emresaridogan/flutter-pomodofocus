@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pomodofocus/core/base/state/base_state_stl.dart';
+import 'package:pomodofocus/core/constants/color/color_constants.dart';
 
-class IconConstants with BaseStateStl {
-  static IconConstants? _instace;
+class IconConstants {
+  static IconConstants? _instance;
 
-  static IconConstants get instance => _instace ??= IconConstants._init();
+  static IconConstants get instance => _instance ??= IconConstants._init();
 
   IconConstants._init();
 
@@ -13,6 +13,6 @@ class IconConstants with BaseStateStl {
   Icon get passwordHide => const Icon(Icons.remove_red_eye);
   Icon get arrowBack => Icon(
         Icons.arrow_back,
-        color: colorConstants.blackColor,
+        color: ColorConstants.instance.blackColor,
       );
 }
