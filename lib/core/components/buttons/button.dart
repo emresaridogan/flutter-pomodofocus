@@ -5,11 +5,13 @@ import 'package:pomodofocus/core/base/state/base_state_stl.dart';
 
 class Button extends StatelessWidget with BaseStateStl {
   final color;
+  Color? textColor;
   VoidCallback? func;
   final text;
 
   Button({
     Key? key,
+    this.textColor,
     this.func,
     this.color,
     this.text,
@@ -29,8 +31,8 @@ class Button extends StatelessWidget with BaseStateStl {
         onPressed: func,
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: textColor,
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
