@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state_stl.dart';
-import 'package:pomodofocus/view/task/create_task.dart';
+import 'package:pomodofocus/view/register/create_profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget with BaseStateStl {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const CreateTask(),
+      home: const CreateProfile(),
     );
   }
 }

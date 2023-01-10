@@ -34,7 +34,32 @@ class StringConstants {
   get signup => "Sign up";
   get alreadyHave => "Already have an account?";
 
+  // create profile
+  get fillProfile => "Fill Your Profile";
+  get changeLater =>
+      "Don't worry, you can always change it later or you can skip it for now.";
+  get fullName => "Full Name";
+  get nickname => "Nickname";
+  get phoneNumber => "Phone Number";
+  get skip => "Skip";
+  get start => "Start";
+
+  // create task
+  get title => "Title";
+  get taskTitle => "Task Title";
+  get date => "Date";
+  get startTime => "Start Time";
+
   // error
-  get emailHata => "Please input email";
-  get passwordHata => "Please input password";
+  get emailError => "Please input email";
+  get passwordError => "Please input password";
+  get fullNameError => "Please input fullname ";
+  get nicknameError => "Please input nickname ";
+  get phoneNumberError => "Please input phone number ";
+  get selectCategory => "Select Category";
+  get category => "Category";
+  get workingSessions => "Working Sessions";
+  get longBreak => "Long Break";
+  get shortBreak => "Short Break";
+  get createTask => "Create New Task";
 }
