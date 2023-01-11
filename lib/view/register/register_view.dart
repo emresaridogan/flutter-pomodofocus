@@ -76,7 +76,7 @@ class _RegisterViewState extends BaseState<RegisterView> {
                           labelStyle: TextStyle(color: colorConstants.medGrey)),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return stringConstants.emailHata;
+                          return stringConstants.emailError;
                         }
                         return null;
                       },
@@ -99,7 +99,7 @@ class _RegisterViewState extends BaseState<RegisterView> {
                           labelStyle: TextStyle(color: colorConstants.medGrey)),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return stringConstants.passwordHata;
+                          return stringConstants.passwordError;
                         }
                         return null;
                       },
