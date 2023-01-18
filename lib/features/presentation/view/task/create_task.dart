@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/components/buttons/button.dart';
 
-import '../../core/base/view/base_view.dart';
+import '../../../../core/base/view/base_view.dart';
 
 class CreateTask extends StatefulWidget {
   const CreateTask({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
 
-import '../../core/components/buttons/button.dart';
-import '../../core/components/buttons/icon_button.dart';
+import '../../../../core/components/buttons/button.dart';
+import '../../../../core/components/buttons/icon_button.dart';
 import '../login/login_view.dart';
 import '../register/register_view.dart';
 

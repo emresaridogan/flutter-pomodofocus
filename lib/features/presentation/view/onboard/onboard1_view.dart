@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
-import 'package:pomodofocus/view/account/account_setup.dart';
 
-import '../../core/components/buttons/button.dart';
+import '../../../../core/components/buttons/button.dart';
+import 'onboard2_view.dart';
 
-class Onboard3View extends StatefulWidget {
-  const Onboard3View({super.key});
+class Onboard1View extends StatefulWidget {
+  const Onboard1View({super.key});
 
   @override
-  State<Onboard3View> createState() => _Onboard3ViewState();
+  State<Onboard1View> createState() => _Onboard1ViewState();
 }
 
-class _Onboard3ViewState extends BaseState<Onboard3View> {
+class _Onboard1ViewState extends BaseState<Onboard1View> {
   @override
   Widget build(BuildContext context) {
     return BaseView(viewModel: "", onPageBuilder: ((context) => getScaffold));
@@ -21,19 +21,17 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
   Widget get getScaffold => Scaffold(
         backgroundColor: colorConstants.whiteColor,
         body: Column(children: [
-          const Spacer(),
-          Expanded(
-            flex: 4,
-            child: Image.asset(imageConstants.onboard3),
-          ),
           Expanded(
             flex: 3,
+            child: Image.asset(imageConstants.onboard1),
+          ),
+          Expanded(
             child: Row(
               children: [
                 Expanded(
-                  flex: 6,
+                  flex: 3,
                   child: Text(
-                    stringConstants.onboard3,
+                    stringConstants.onboard1,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 35, fontWeight: FontWeight.bold),
@@ -43,7 +41,6 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
             ),
           ),
           Expanded(
-            flex: 2,
             child: Row(
               children: [
                 Expanded(
@@ -52,8 +49,8 @@ class _Onboard3ViewState extends BaseState<Onboard3View> {
                     func: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => const AccountSetup())),
-                    text: stringConstants.onboard3button,
+                            builder: (_) => const Onboard2View())),
+                    text: stringConstants.next,
                     color: colorConstants.secondaryColor,
                   ),
                 ),

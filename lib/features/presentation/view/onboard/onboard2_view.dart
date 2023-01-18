@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
 
-import '../../core/components/buttons/button.dart';
+import '../../../../core/components/buttons/button.dart';
 import 'onboard3_view.dart';
 
 class Onboard2View extends StatefulWidget {

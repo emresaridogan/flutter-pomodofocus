@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state_stl.dart';
-import 'package:pomodofocus/view/register/create_profile.dart';
+import 'package:pomodofocus/features/presentation/view/splash/splash_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget with BaseStateStl {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const CreateProfile(),
+      home: const SplashView(),
     );
   }
 }

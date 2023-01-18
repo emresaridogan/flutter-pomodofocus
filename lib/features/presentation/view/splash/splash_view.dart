@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
-import 'package:pomodofocus/view/onboard/onboard1_view.dart';
+import 'package:pomodofocus/features/presentation/view/onboard/onboard1_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

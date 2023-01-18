@@ -1,11 +1,10 @@
-import 'package:pomodofocus/core/constants/app/app_constants.dart';
-import 'package:pomodofocus/core/constants/color/color_constants.dart';
-import 'package:pomodofocus/core/constants/image/image_constants.dart';
-import 'package:pomodofocus/core/constants/padding/padding_constants.dart';
-import 'package:pomodofocus/core/constants/radius/radius_constants.dart';
-import 'package:pomodofocus/core/constants/string/string_constants.dart';
-
+import '../../constants/app/app_constants.dart';
+import '../../constants/color/color_constants.dart';
 import '../../constants/icon/icon_constants.dart';
+import '../../constants/image/image_constants.dart';
+import '../../constants/padding/padding_constants.dart';
+import '../../constants/radius/radius_constants.dart';
+import '../../constants/string/string_constants.dart';
 
 abstract class BaseStateStl {
   ColorConstants colorConstants = ColorConstants.instance;

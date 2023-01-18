@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
-import 'package:pomodofocus/view/register/register_view.dart';
+import 'package:pomodofocus/features/presentation/view/register/register_view.dart';
 
-import '../../core/components/buttons/button.dart';
-import '../../core/components/buttons/icon_card.dart';
+import '../../../../core/components/buttons/button.dart';
+import '../../../../core/components/buttons/icon_card.dart';
 import '../splash/splash_view.dart';
 
 class LoginView extends StatefulWidget {

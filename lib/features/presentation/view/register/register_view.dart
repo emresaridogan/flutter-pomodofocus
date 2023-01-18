@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
-import 'package:pomodofocus/view/login/login_view.dart';
-import 'package:pomodofocus/view/register/create_profile.dart';
+import 'package:pomodofocus/features/presentation/view/login/login_view.dart';
+import 'package:pomodofocus/features/presentation/view/register/create_profile.dart';
 
-import '../../core/components/buttons/button.dart';
-import '../../core/components/buttons/icon_card.dart';
+import '../../../../core/components/buttons/button.dart';
+import '../../../../core/components/buttons/icon_card.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
