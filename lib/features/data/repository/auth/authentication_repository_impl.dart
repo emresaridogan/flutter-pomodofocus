@@ -6,7 +6,7 @@ import 'package:pomodofocus/features/domain/entities/user/user_entity.dart';
 import '../../../../core/error/failures.dart';
 import '../../../domain/entities/auth/authentication_entity.dart';
 import '../../../domain/repository/auth/authentication_repository.dart';
-import '../../datasources/authentication_service.dart';
+import '../../datasources/auth/authentication_service.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
   AuthenticationService authenticationService;
