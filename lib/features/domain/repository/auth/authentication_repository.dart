@@ -13,6 +13,5 @@ abstract class AuthenticationRepository {
   Future<Either<Failure, bool>> updateUser(String fullname, nickname, uid);
 
   Future<bool> signOut();
-  Future<Either<Failure, UserCredential>> signInWithFacebook();
-  Future<Either<Failure, UserCredential>> signInWithGoogle();
+ 
 }

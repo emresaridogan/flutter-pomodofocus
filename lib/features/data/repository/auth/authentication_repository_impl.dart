@@ -34,15 +34,6 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
     return _signIn(email, password);
   }
 
-  @override
-  Future<Either<Failure, UserCredential>> signInWithFacebook() {
-    return _signInWithFacebook();
-  }
-
-  @override
-  Future<Either<Failure, UserCredential>> signInWithGoogle() {
-    return _signInWithGoogle();
-  }
 
   @override
   Future<Either<Failure, AuthenticationEntity>> signUp(String email, password) {
@@ -98,25 +89,5 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, UserCredential>> _signInWithFacebook() async {
-    try {
-      UserCredential userCredential =
-          await authenticationService.signInWithFacebook();
-      return Right(userCredential);
-    } catch (e) {
-      return Left(AuthenticationFailure());
-    }
-  }
 
-  @override
-  Future<Either<Failure, UserCredential>> _signInWithGoogle() async {
-    try {
-      UserCredential userCredential =
-          await authenticationService.signInWithGoogle();
-      return Right(userCredential);
-    } catch (e) {
-      return Left(AuthenticationFailure());
-    }
-  }
 }

@@ -16,8 +16,7 @@ abstract class AuthenticationService {
   Future<AuthenticationModel> signIn(String email, password);
 
   Future<bool> signOut();
-  Future<UserCredential> signInWithFacebook();
-  Future<UserCredential> signInWithGoogle();
+
 }
 
 class AuthenticationServiceImpl extends AuthenticationService {
@@ -35,16 +34,6 @@ class AuthenticationServiceImpl extends AuthenticationService {
   @override
   Future<AuthenticationModel> signUp(String email, password) {
     return _signUp(email, password);
-  }
-
-  @override
-  Future<UserCredential> signInWithFacebook() {
-    return _signInWithFacebook();
-  }
-
-  @override
-  Future<UserCredential> signInWithGoogle() {
-    return _signInWithGoogle();
   }
 
   @override
@@ -110,57 +99,6 @@ class AuthenticationServiceImpl extends AuthenticationService {
     }
   }
 
-  Future<UserCredential> _signInWithFacebook() async {
-    try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
-
-      final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithCredential(facebookAuthCredential);
-      if (userCredential.user != null) {
-        firebaseFirestore
-            .collection("Users")
-            .doc(userCredential.user!.uid)
-            .set({'email': userCredential.user!.email});
-        return userCredential;
-      } else {
-        throw AuthenticationException();
-      }
-    } catch (e) {
-      throw AuthenticationException();
-    }
-  }
-
-  Future<UserCredential> _signInWithGoogle() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    try {
-      GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-      GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
-      AuthCredential authCredential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken,
-      );
-
-      final UserCredential userCredential =
-          await auth.signInWithCredential(authCredential);
-
-      if (userCredential.user != null) {
-        firebaseFirestore
-            .collection("Users")
-            .doc(userCredential.user!.uid)
-            .set({'email': userCredential.user!.email});
-        return userCredential;
-      }
-    } catch (e) {
-      print(e.toString());
-      throw AuthenticationException();
-    }
-
-    throw AuthenticationException();
-  }
 
   Future<bool> _updateUser(UserEntity user) async {
     final uid = user.uid;
