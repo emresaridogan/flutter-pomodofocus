@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../entities/auth/authentication_entity.dart';
-import '../../repository/authentication_repository.dart';
+import '../../repository/auth/authentication_repository.dart';
 
 class SignInUseCase extends UseCase<AuthenticationEntity, SignInUseCaseParams> {
   AuthenticationRepository authenticationRepository;

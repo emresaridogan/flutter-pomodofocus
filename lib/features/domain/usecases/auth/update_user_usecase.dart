@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../../repository/authentication_repository.dart';
+import '../../repository/auth/authentication_repository.dart';
 
 class UpdateUserUseCase extends UseCase<bool, UpdateUserUseCaseParams> {
   AuthenticationRepository authenticationRepository;

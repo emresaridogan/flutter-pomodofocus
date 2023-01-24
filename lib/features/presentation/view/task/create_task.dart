@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/components/buttons/button.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../core/base/view/base_view.dart';
+import '../../bloc/auth/authentication_bloc.dart';
+import '../../bloc/auth/authentication_state.dart';
+import '../../bloc/task/task_bloc.dart';
 
 class CreateTask extends StatefulWidget {
   const CreateTask({super.key});
@@ -12,38 +17,50 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends BaseState<CreateTask> {
-  int _value = 0;
-  int _value1 = 0;
-  int _value2 = 0;
+  int _countShortBreak = 0;
+  int _countWorkingSessions = 0;
+  int _countLongBreak = 0;
+
+  TextEditingController titleController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  late String userId;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: colorConstants.whiteColor,
-      appBar: AppBar(
-        elevation: 0,
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+      if (state is Authenticated) {
+        userId = state.uid;
+      }
+      return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: colorConstants.whiteColor,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.arrow_back,
-            color: colorConstants.blackColor,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: colorConstants.whiteColor,
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_back,
+              color: colorConstants.blackColor,
+            ),
+          ),
+          title: Text(
+            stringConstants.createTask,
+            style: TextStyle(
+                color: colorConstants.blackColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 25),
           ),
         ),
-        title: Text(
-          stringConstants.createTask,
-          style: TextStyle(
-              color: colorConstants.blackColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 25),
+        body: BaseView(
+          viewModel: "",
+          onPageBuilder: (context) => getBody,
         ),
-      ),
-      body: BaseView(
-        viewModel: "",
-        onPageBuilder: (context) => getBody,
-      ),
-    );
+      );
+    });
   }
 
   Widget get getBody =>
@@ -61,6 +78,7 @@ class _CreateTaskState extends BaseState<CreateTask> {
                 height: dynamicHeight(0.02),
               ),
               TextFormField(
+                controller: titleController,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -92,6 +110,7 @@ class _CreateTaskState extends BaseState<CreateTask> {
                       height: dynamicHeight(0.02),
                     ),
                     TextFormField(
+                      controller: dateController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -124,6 +143,7 @@ class _CreateTaskState extends BaseState<CreateTask> {
                       height: dynamicHeight(0.02),
                     ),
                     TextFormField(
+                      controller: timeController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -156,6 +176,7 @@ class _CreateTaskState extends BaseState<CreateTask> {
                 height: dynamicHeight(0.02),
               ),
               TextFormField(
+                controller: categoryController,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -184,16 +205,16 @@ class _CreateTaskState extends BaseState<CreateTask> {
                 height: dynamicHeight(0.02),
               ),
               Slider(
-                value: _value1.toDouble(),
+                value: _countWorkingSessions.toDouble(),
                 min: 0.0,
                 max: 8.0,
                 divisions: 8,
                 activeColor: colorConstants.secondaryColor,
                 inactiveColor: colorConstants.lightGrey,
-                label: _value1.toString(),
+                label: _countWorkingSessions.toString(),
                 onChanged: (double newValue) {
                   setState(() {
-                    _value1 = newValue.round();
+                    _countWorkingSessions = newValue.round();
                   });
                 },
               )
@@ -212,16 +233,16 @@ class _CreateTaskState extends BaseState<CreateTask> {
               height: dynamicHeight(0.02),
             ),
             Slider(
-              value: _value2.toDouble(),
+              value: _countLongBreak.toDouble(),
               min: 0.0,
               max: 30.0,
               divisions: 6,
               activeColor: colorConstants.secondaryColor,
               inactiveColor: colorConstants.lightGrey,
-              label: _value2.toString(),
+              label: _countLongBreak.toString(),
               onChanged: (double newValue) {
                 setState(() {
-                  _value2 = newValue.round();
+                  _countLongBreak = newValue.round();
                 });
               },
             )
@@ -240,16 +261,16 @@ class _CreateTaskState extends BaseState<CreateTask> {
                 height: dynamicHeight(0.02),
               ),
               Slider(
-                value: _value.toDouble(),
+                value: _countShortBreak.toDouble(),
                 min: 0.0,
                 max: 10.0,
                 divisions: 10,
                 activeColor: colorConstants.secondaryColor,
                 inactiveColor: colorConstants.lightGrey,
-                label: _value.toString(),
+                label: _countShortBreak.toString(),
                 onChanged: (double newValue) {
                   setState(() {
-                    _value = newValue.round();
+                    _countShortBreak = newValue.round();
                   });
                 },
               )
@@ -261,6 +282,19 @@ class _CreateTaskState extends BaseState<CreateTask> {
             children: [
               Expanded(
                 child: Button(
+                  func: () {
+                    BlocProvider.of<TaskBloc>(context).add(
+                        CreateTaskButtonPressed(
+                            category: categoryController.text,
+                            countLongBreak: _countLongBreak,
+                            countSession: _countWorkingSessions,
+                            countShortBreak: _countShortBreak,
+                            date: dateController.text,
+                            time: timeController.text,
+                            title: titleController.text,
+                            uid: userId,
+                            id: const Uuid().v1().toString()));
+                  },
                   text: stringConstants.createTask,
                   color: colorConstants.secondaryColor,
                   textColor: colorConstants.whiteColor,

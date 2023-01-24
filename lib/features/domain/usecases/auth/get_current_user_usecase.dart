@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../entities/auth/authentication_entity.dart';
-import '../../repository/authentication_repository.dart';
+import '../../repository/auth/authentication_repository.dart';
 
 class GetCurrentUserUseCase extends UseCase<AuthenticationEntity, NoParams> {
   AuthenticationRepository authenticationRepository;

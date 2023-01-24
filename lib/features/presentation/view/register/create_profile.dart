@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
+import 'package:pomodofocus/features/presentation/bloc/user/user_bloc.dart';
+import 'package:pomodofocus/features/presentation/view/task/create_task.dart';
 
 import '../../../../core/components/buttons/button.dart';
+import '../../bloc/auth/authentication_bloc.dart';
+import '../../bloc/auth/authentication_state.dart';
+import '../../bloc/user/user_event.dart';
 import '../splash/splash_view.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -13,21 +19,26 @@ class CreateProfile extends StatefulWidget {
 }
 
 class _CreateProfileState extends BaseState<CreateProfile> {
-  final _formKey = GlobalKey<FormState>();
-
-  late String _email;
-  late String _fullName;
-  late String _nickname;
-  late String _phoneNumber;
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
+  late String userId;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BaseView(
-          viewModel: "",
-          onPageBuilder: (context) => SingleChildScrollView(
-              child: SizedBox(height: dynamicHeight(1), child: getBody))),
-    );
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+      if (state is Authenticated) {
+        userId = state.uid;
+      }
+      return Scaffold(
+        body: BaseView(
+            viewModel: "",
+            onPageBuilder: (context) => SingleChildScrollView(
+                child: SizedBox(height: dynamicHeight(1), child: getBody))),
+      );
+    });
   }
 
   Widget get getBody => Column(
@@ -76,139 +87,147 @@ class _CreateProfileState extends BaseState<CreateProfile> {
               )),
           Expanded(
             flex: 4,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: radiusConstants.circular20,
-                            borderSide: BorderSide.none,
-                          ),
-                          focusColor: colorConstants.blackColor,
-                          filled: true,
-                          fillColor: colorConstants.lightGrey,
-                          labelText: stringConstants.fullName,
-                          labelStyle: TextStyle(color: colorConstants.medGrey)),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return stringConstants.emailError;
-                        }
-                        return null;
-                      },
-                      onSaved: (value) => _fullName = value!,
-                    ),
-                  ),
-                  SizedBox(
-                    height: dynamicHeight(0.01),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: radiusConstants.circular20,
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          fillColor: colorConstants.lightGrey,
-                          labelText: stringConstants.nickname,
-                          labelStyle: TextStyle(color: colorConstants.medGrey)),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return stringConstants.nicknameError;
-                        }
-                        return null;
-                      },
-                      onSaved: (value) => _nickname = value!,
-                    ),
-                  ),
-                  SizedBox(
-                    height: dynamicHeight(0.01),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: radiusConstants.circular20,
-                            borderSide: BorderSide.none,
-                          ),
-                          focusColor: colorConstants.blackColor,
-                          filled: true,
-                          fillColor: colorConstants.lightGrey,
-                          labelText: stringConstants.email,
-                          labelStyle: TextStyle(color: colorConstants.medGrey)),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return stringConstants.emailError;
-                        }
-                        return null;
-                      },
-                      onSaved: (value) => _email = value!,
-                    ),
-                  ),
-                  SizedBox(
-                    height: dynamicHeight(0.01),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: radiusConstants.circular20,
-                            borderSide: BorderSide.none,
-                          ),
-                          focusColor: colorConstants.blackColor,
-                          filled: true,
-                          fillColor: colorConstants.lightGrey,
-                          labelText: stringConstants.phoneNumber,
-                          labelStyle: TextStyle(color: colorConstants.medGrey)),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return stringConstants.phoneNumberError;
-                        }
-                        return null;
-                      },
-                      onSaved: (value) => _phoneNumber = value!,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: Button(
-                            text: stringConstants.skip,
-                            color: colorConstants.secondButtonColor,
-                            textColor: colorConstants.secondaryColor,
-                            func: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => const SplashView())),
-                          ),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    controller: _fullName,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: radiusConstants.circular20,
+                          borderSide: BorderSide.none,
                         ),
-                        const Spacer(),
-                        Expanded(
-                          flex: 5,
-                          child: Button(
+                        focusColor: colorConstants.blackColor,
+                        filled: true,
+                        fillColor: colorConstants.lightGrey,
+                        labelText: stringConstants.fullName,
+                        labelStyle: TextStyle(color: colorConstants.medGrey)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return stringConstants.emailError;
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _fullName.text = value!,
+                  ),
+                ),
+                SizedBox(
+                  height: dynamicHeight(0.01),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    controller: _username,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: radiusConstants.circular20,
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: colorConstants.lightGrey,
+                        labelText: stringConstants.nickname,
+                        labelStyle: TextStyle(color: colorConstants.medGrey)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return stringConstants.nicknameError;
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _username.text = value!,
+                  ),
+                ),
+                SizedBox(
+                  height: dynamicHeight(0.01),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    controller: _email,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: radiusConstants.circular20,
+                          borderSide: BorderSide.none,
+                        ),
+                        focusColor: colorConstants.blackColor,
+                        filled: true,
+                        fillColor: colorConstants.lightGrey,
+                        labelText: stringConstants.email,
+                        labelStyle: TextStyle(color: colorConstants.medGrey)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return stringConstants.emailError;
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _email.text = value!,
+                  ),
+                ),
+                SizedBox(
+                  height: dynamicHeight(0.01),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    controller: _phoneNumber,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: radiusConstants.circular20,
+                          borderSide: BorderSide.none,
+                        ),
+                        focusColor: colorConstants.blackColor,
+                        filled: true,
+                        fillColor: colorConstants.lightGrey,
+                        labelText: stringConstants.phoneNumber,
+                        labelStyle: TextStyle(color: colorConstants.medGrey)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return stringConstants.phoneNumberError;
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _phoneNumber.text = value!,
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Button(
+                          text: stringConstants.skip,
+                          color: colorConstants.secondButtonColor,
+                          textColor: colorConstants.secondaryColor,
+                          func: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const SplashView())),
+                        ),
+                      ),
+                      const Spacer(),
+                      Expanded(
+                        flex: 5,
+                        child: Button(
                             text: stringConstants.start,
                             color: colorConstants.secondaryColor,
-                            func: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => const SplashView())),
-                          ),
-                        ),
-                      ],
-                    ),
+                            func: () {
+                              BlocProvider.of<UserBloc>(context).add(
+                                  UpdateUserButtonPressed(
+                                      name: _fullName.text,
+                                      username: _username.text,
+                                      userId: userId));
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const CreateTask()));
+                            }),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

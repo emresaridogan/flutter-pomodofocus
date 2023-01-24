@@ -71,6 +71,9 @@ class _AccountSetupState extends BaseState<AccountSetup> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: dynamicHeight(0.02),
+                ),
                 Expanded(
                   child: Row(
                     children: [
@@ -83,6 +86,9 @@ class _AccountSetupState extends BaseState<AccountSetup> {
                       )),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: dynamicHeight(0.02),
                 ),
                 Expanded(
                   child: Row(
