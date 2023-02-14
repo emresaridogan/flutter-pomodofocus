@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
+import 'package:pomodofocus/features/presentation/view/main/main_view.dart';
 import 'package:pomodofocus/features/presentation/view/onboard/onboard1_view.dart';
-import 'package:pomodofocus/features/presentation/view/task/create_task.dart';
 
 import '../../../data/models/auth/authentication_model.dart';
 import '../../bloc/auth/authentication_bloc.dart';
@@ -44,7 +44,7 @@ class _SplashViewState extends BaseState<SplashView> {
       } else if (state is Authenticated) {
         print(state.uid);
 
-        return const CreateTask();
+        return const MainView();
       } else if (state is UnAuthenticated) {
         print(state);
 

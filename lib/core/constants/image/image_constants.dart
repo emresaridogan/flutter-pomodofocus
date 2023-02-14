@@ -17,6 +17,8 @@ class ImageConstants {
   String get apple => toSvg('apple');
   String get google => toSvg('google');
 
+  String get home => toPng('home');
+
   String toSvg(String name) =>
       '${ApplicationConstants.instance.imagesPath}$name.svg';
 

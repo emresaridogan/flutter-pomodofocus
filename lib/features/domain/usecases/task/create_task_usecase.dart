@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../entities/task/task_entity.dart';
-import '../../repository/firebase_repository.dart';
+import '../../repository/firebase/firebase_repository.dart';
 
 class CreateTaskUseCase extends UseCase<bool, CreateTaskUseCaseParams> {
   FirebaseRepository firebaseRepository;

@@ -3,15 +3,11 @@ import 'package:pomodofocus/core/constants/color/color_constants.dart';
 
 class BaseView<T> extends StatefulWidget {
   final Widget Function(BuildContext context) onPageBuilder;
-  final T viewModel;
-  final Function(T model)? onModelReady;
   final VoidCallback? onDispose;
 
   const BaseView(
       {Key? key,
-      required this.viewModel,
       required this.onPageBuilder,
-      this.onModelReady,
       this.onDispose})
       : super(key: key);
 
@@ -23,9 +19,7 @@ class _BaseViewState extends State<BaseView> {
   @override
   void initState() {
     super.initState();
-    if (widget.onModelReady != null) {
-      widget.onModelReady!(widget.viewModel);
-    }
+   
   }
 
   @override

@@ -15,7 +15,7 @@ class Onboard3View extends StatefulWidget {
 class _Onboard3ViewState extends BaseState<Onboard3View> {
   @override
   Widget build(BuildContext context) {
-    return BaseView(viewModel: "", onPageBuilder: ((context) => getScaffold));
+    return BaseView( onPageBuilder: ((context) => getScaffold));
   }
 
   Widget get getScaffold => Scaffold(

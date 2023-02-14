@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/components/buttons/button.dart';
+import 'package:pomodofocus/features/presentation/view/splash/splash_view.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/base/view/base_view.dart';
@@ -56,8 +58,11 @@ class _CreateTaskState extends BaseState<CreateTask> {
           ),
         ),
         body: BaseView(
-          viewModel: "",
-          onPageBuilder: (context) => getBody,
+          onPageBuilder: (context) => SingleChildScrollView(
+            child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: dynamicHeight(1)),
+                child: getBody),
+          ),
         ),
       );
     });
@@ -110,6 +115,21 @@ class _CreateTaskState extends BaseState<CreateTask> {
                       height: dynamicHeight(0.02),
                     ),
                     TextFormField(
+                      onTap: () async {
+                        DateTime? selectedDate = await showDatePicker(
+                            locale: const Locale('tr'),
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2123));
+
+                        if (selectedDate != null) {
+                          setState(() {
+                            dateController.text =
+                                DateFormat('dd.MM.yyyy').format(selectedDate);
+                          });
+                        }
+                      },
                       controller: dateController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
@@ -143,6 +163,22 @@ class _CreateTaskState extends BaseState<CreateTask> {
                       height: dynamicHeight(0.02),
                     ),
                     TextFormField(
+                      onTap: () async {
+                        TimeOfDay? selectedTime = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay(
+                                hour: DateTime.now().hour,
+                                minute: DateTime.now().minute));
+                        if (selectedTime != null) {
+                          setState(() {
+                            final hour =
+                                selectedTime.hour.toString().padLeft(2, '0');
+                            final minute =
+                                selectedTime.minute.toString().padLeft(2, '0');
+                            timeController.text = "$hour:$minute";
+                          });
+                        }
+                      },
                       controller: timeController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
@@ -294,6 +330,9 @@ class _CreateTaskState extends BaseState<CreateTask> {
                             title: titleController.text,
                             uid: userId,
                             id: const Uuid().v1().toString()));
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const SplashView()));
                   },
                   text: stringConstants.createTask,
                   color: colorConstants.secondaryColor,

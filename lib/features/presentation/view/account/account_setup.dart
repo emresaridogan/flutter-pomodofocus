@@ -33,7 +33,6 @@ class _AccountSetupState extends BaseState<AccountSetup> {
         ),
       ),
       body: BaseView(
-        viewModel: "",
         onPageBuilder: (context) => getBody,
       ),
     );

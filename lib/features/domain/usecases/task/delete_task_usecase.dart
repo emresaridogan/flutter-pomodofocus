@@ -4,7 +4,7 @@ import 'package:pomodofocus/core/usecases/usecase.dart';
 import 'package:pomodofocus/features/domain/entities/task/task_entity.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../repository/firebase_repository.dart';
+import '../../repository/firebase/firebase_repository.dart';
 
 class DeleteTaskUseCase extends UseCase<bool, DeleteTaskUseCaseParams> {
   final FirebaseRepository repository;

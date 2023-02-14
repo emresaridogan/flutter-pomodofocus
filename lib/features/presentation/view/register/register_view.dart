@@ -47,7 +47,7 @@ class _RegisterViewState extends BaseState<RegisterView> {
           leading: IconButton(onPressed: () {}, icon: iconConstants.arrowBack),
         ),
         body: BaseView(
-          viewModel: "",
+          
           onPageBuilder: (context) => getBody,
         ),
       );

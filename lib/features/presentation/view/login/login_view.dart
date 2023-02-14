@@ -47,7 +47,6 @@ class _LoginViewState extends BaseState<LoginView> {
           leading: IconButton(onPressed: () {}, icon: iconConstants.arrowBack),
         ),
         body: BaseView(
-          viewModel: "",
           onPageBuilder: (context) => getBody,
         ),
       );

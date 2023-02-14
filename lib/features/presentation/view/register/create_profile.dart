@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomodofocus/core/base/state/base_state.dart';
 import 'package:pomodofocus/core/base/view/base_view.dart';
 import 'package:pomodofocus/features/presentation/bloc/user/user_bloc.dart';
-import 'package:pomodofocus/features/presentation/view/task/create_task.dart';
+import 'package:pomodofocus/features/presentation/view/main/main_view.dart';
 
 import '../../../../core/components/buttons/button.dart';
 import '../../bloc/auth/authentication_bloc.dart';
@@ -34,7 +34,6 @@ class _CreateProfileState extends BaseState<CreateProfile> {
       }
       return Scaffold(
         body: BaseView(
-            viewModel: "",
             onPageBuilder: (context) => SingleChildScrollView(
                 child: SizedBox(height: dynamicHeight(1), child: getBody))),
       );
@@ -221,7 +220,7 @@ class _CreateProfileState extends BaseState<CreateProfile> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => const CreateTask()));
+                                      builder: (_) => const MainView()));
                             }),
                       ),
                     ],

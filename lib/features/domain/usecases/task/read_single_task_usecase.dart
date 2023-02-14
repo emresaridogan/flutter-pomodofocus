@@ -1,5 +1,5 @@
 import '../../entities/task/task_entity.dart';
-import '../../repository/firebase_repository.dart';
+import '../../repository/firebase/firebase_repository.dart';
 
 class ReadSingleTaskUseCase {
   final FirebaseRepository repository;
