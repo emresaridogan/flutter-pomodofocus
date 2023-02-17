@@ -19,6 +19,12 @@ class ImageConstants {
 
   String get home => toPng('home');
 
+  String get homeSvg => toSvg('home');
+  String get profileSvg => toSvg('profile');
+  String get taskSvg => toSvg('task');
+  String get chartSvg => toSvg('chart');
+  String get addSvg => toSvg('add');
+
   String toSvg(String name) =>
       '${ApplicationConstants.instance.imagesPath}$name.svg';
 
