@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pomodofocus/features/data/datasource/firebase/firebase_service.dart';
+import 'package:pomodofocus/features/data/datasources/firebase/firebase_service.dart';
 import 'package:pomodofocus/features/data/repository/auth/authentication_repository_impl.dart';
 import 'package:pomodofocus/features/data/repository/firebase/firebase_repository_iml.dart';
 import 'package:pomodofocus/features/domain/repository/auth/authentication_repository.dart';
@@ -17,7 +17,7 @@ import 'package:pomodofocus/features/presentation/bloc/auth/authentication_bloc.
 import 'package:pomodofocus/features/presentation/bloc/task/task_bloc.dart';
 import 'package:pomodofocus/features/presentation/bloc/user/user_bloc.dart';
 
-import 'features/data/datasource/auth/authentication_service.dart';
+import 'features/data/datasources/auth/authentication_service.dart';
 import 'features/domain/usecases/auth/sign_in_usecase.dart';
 import 'features/domain/usecases/auth/sign_out_usecase.dart';
 import 'features/domain/usecases/auth/sign_up_usecase.dart';
