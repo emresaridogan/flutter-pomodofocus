@@ -19,6 +19,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget with BaseStateStl {
+  MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

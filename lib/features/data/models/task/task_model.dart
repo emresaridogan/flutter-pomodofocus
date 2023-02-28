@@ -11,10 +11,9 @@ class TaskModel extends TaskEntity {
   @override
   String uid;
   @override
-  String date;
+  Timestamp date;
   @override
-  String time;
-
+  String? dateString;
   @override
   String category;
   @override
@@ -30,7 +29,7 @@ class TaskModel extends TaskEntity {
       required this.uid,
       required this.title,
       required this.date,
-      required this.time,
+      this.dateString,
       required this.category,
       required this.countLongBreak,
       required this.countSession,
@@ -41,7 +40,7 @@ class TaskModel extends TaskEntity {
           id: id,
           title: title,
           date: date,
-          time: time,
+          dateString: dateString,
           category: category,
           countLongBreak: countLongBreak,
           countSession: countSession,
@@ -57,9 +56,9 @@ class TaskModel extends TaskEntity {
       countSession: snapshot['countSession'] ?? 0,
       countShortBreak: snapshot['countShortBreak'] ?? 0,
       date: snapshot['date'] ?? '',
+      dateString: snapshot['dateString'] ?? '',
       createAt: snapshot['createAt'] ?? '',
       id: snapshot['id'] ?? '',
-      time: snapshot['time'] ?? '',
       title: snapshot['title'] ?? '',
       uid: snapshot['uid'] ?? '',
     );
@@ -70,7 +69,7 @@ class TaskModel extends TaskEntity {
         "createAt": createAt,
         "title": title,
         "date": date,
-        "time": time,
+        "dateString": dateString,
         "category": category,
         "countLongBreak": countLongBreak,
         "countSession": countSession,

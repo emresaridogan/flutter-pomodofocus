@@ -5,8 +5,8 @@ class TaskEntity extends Equatable {
   String id;
   String title;
   String uid;
-  String date;
-  String time;
+  Timestamp date;
+  String? dateString;
   String category;
   Timestamp? createAt;
   int countLongBreak;
@@ -19,7 +19,7 @@ class TaskEntity extends Equatable {
       required this.uid,
       required this.title,
       required this.date,
-      required this.time,
+      this.dateString,
       required this.category,
       required this.countLongBreak,
       required this.countSession,
@@ -32,7 +32,7 @@ class TaskEntity extends Equatable {
         uid,
         title,
         date,
-        time,
+        dateString,
         category,
         countLongBreak,
         countSession,

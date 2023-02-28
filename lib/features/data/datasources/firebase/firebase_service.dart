@@ -22,7 +22,8 @@ class FirebaseServiceImpl extends FirebaseService {
     QuerySnapshot query = await firebaseFirestore
         .collection('Tasks')
         .where('uid', isEqualTo: uid)
-        .where('date', isEqualTo: date)
+        .where('dateString', isEqualTo: date)
+        .orderBy("date")
         .get();
     return query.docs.map((e) => TaskModel.fromSnapshot(e)).toList();
   }
@@ -42,7 +43,7 @@ class FirebaseServiceImpl extends FirebaseService {
       countSession: task.countSession,
       countShortBreak: task.countShortBreak,
       date: task.date,
-      time: task.time,
+      dateString: task.dateString,
       title: task.title,
       uid: task.uid,
       id: task.id,

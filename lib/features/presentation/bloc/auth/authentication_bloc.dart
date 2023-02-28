@@ -30,9 +30,8 @@ class AuthenticationBloc
       : super(AuthenticationLoading()) {
     on<PageStarted>((event, emit) async {
       emit(AuthenticationLoading());
-      emit(UnAuthenticated(error: "e.toString()"));
-      var call = await getCurrentUserUseCase.call(NoParams());
-      call.fold((l) => emit(UnAuthenticated(error: l.toString())),
+      var result = await getCurrentUserUseCase.call(NoParams());
+      result.fold((l) => emit(UnAuthenticated(error: l.toString())),
           (r) => emit(Authenticated(uid: r.userId)));
     });
     on<SignOutButtonPressed>((event, emit) async {
