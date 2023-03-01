@@ -1,11 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-
 import 'package:pomodofocus/features/domain/usecases/task/create_task_usecase.dart';
 import 'package:pomodofocus/features/domain/usecases/task/read_tasks_usecase.dart';
-
 import '../../../domain/entities/task/task_entity.dart';
 
 part 'task_event.dart';
@@ -28,7 +25,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         countSession: event.countSession,
         countShortBreak: event.countShortBreak,
         date: event.date,
-        time: event.time,
+        dateString: event.dateString,
         id: event.id,
       );
       var result =

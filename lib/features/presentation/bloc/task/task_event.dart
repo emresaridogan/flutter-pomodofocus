@@ -7,8 +7,8 @@ class CreateTaskButtonPressed extends TaskEvent {
   String title;
   String id;
   String uid;
-  String date;
-  String time;
+  Timestamp date;
+  String dateString;
   String category;
   int countLongBreak;
   int countSession;
@@ -18,7 +18,7 @@ class CreateTaskButtonPressed extends TaskEvent {
     required this.title,
     required this.uid,
     required this.date,
-    required this.time,
+    required this.dateString,
     required this.category,
     required this.countLongBreak,
     required this.countSession,
@@ -31,7 +31,7 @@ class CreateTaskButtonPressed extends TaskEvent {
         title,
         uid,
         date,
-        time,
+        dateString,
         category,
         countLongBreak,
         countSession,

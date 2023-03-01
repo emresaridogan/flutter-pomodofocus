@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pomodofocus/features/presentation/view/home/home_view.dart';
+import 'package:pomodofocus/features/presentation/view/task/task_view.dart';
 import 'package:pomodofocus/features/presentation/view/task/create_task.dart';
-
 import '../../../../core/base/state/base_state.dart';
 
 class MainView extends StatefulWidget {
@@ -93,7 +93,11 @@ class _MainViewState extends BaseState<MainView> {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: onPageChanged,
-        children: const [HomeView(), HomeView(), CreateTask()],
+        children: [
+          const HomeView(),
+          const TaskView(),
+          CreateTask(pageController: pageController)
+        ],
       ),
     );
   }

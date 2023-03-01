@@ -147,8 +147,8 @@ class _AccountSetupState extends BaseState<AccountSetup> {
                 const SizedBox(
                   width: 5,
                 ),
-                GestureDetector(
-                  onTap: (() => Navigator.push(context,
+                ElevatedButton(
+                  onPressed: (() => Navigator.push(context,
                       MaterialPageRoute(builder: (_) => const RegisterView()))),
                   child: Text(
                     stringConstants.signup,
