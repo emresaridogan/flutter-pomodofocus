@@ -13,8 +13,8 @@
 ![Register](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/7.jpeg)| ![Task Calendar (Empty)](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/8.jpeg) | ![Create Task](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/9.jpeg)
 
  Task Calendar | Home | 
- -----| ----------- | ------
-![Task Calendar](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/10.jpeg)| ![Home](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/11.jpeg) | ![]()
+ -----| ----------- | 
+![Task Calendar](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/10.jpeg)| ![Home](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/11.jpeg) 
 
 
 ### Features :point_down:
