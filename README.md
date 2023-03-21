@@ -1,16 +1,26 @@
-# pomodofocus
+# Pomodofocus :call_me_hand:
 
-A new Flutter project.
+ Splash Screen | Onboard1 | Onboard2
+ -----| ----------- | ------
+![Splash Screen](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/1.jpeg)| ![Onboard1](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/2.jpeg) | ![Onboard2](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/3.jpeg)
 
-## Getting Started
+ Onboard3 | Account | Login
+ -----| ----------- | ------
+![Onboard3](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/4.jpeg)| ![Account](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/5.jpeg) | ![Login](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/6.jpeg)
+ 
+ Register | Task Calendar (Empty) | Create Task
+ -----| ----------- | ------
+![Register](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/7.jpeg)| ![Task Calendar (Empty)](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/8.jpeg) | ![Create Task](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/9.jpeg)
 
-This project is a starting point for a Flutter application.
+ Task Calendar | Home | 
+ -----| ----------- | ------
+![Task Calendar](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/10.jpeg)| ![Home](https://github.com/emresaridogan/flutter-pomodofocus/blob/master/project/11.jpeg) | ![]()
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Features :point_down:
+- User-friendly interface
+- Clean Architecture
+- Bloc State Management
+- Responsive Design
+- Firebase Auth, Cloud Firestore
+- A habit-forming Pomodoro application
